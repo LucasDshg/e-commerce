@@ -1,0 +1,25 @@
+$utilities: map-merge(
+  $utilities,
+  (
+    'fit': (
+      property: object-fit,
+      class: fit,
+      values: (
+        cover: cover,
+        contain: contain,
+        fill: fill,
+        scale-down: scale-down,
+      ),
+    ),
+    'cursor': (
+      property: cursor,
+      class: cursor,
+      values: (
+        none: none,
+        wait: wait,
+        pointer: pointer,
+        not-allowed: not-allowed,
+      ),
+    ),
+  )
+);

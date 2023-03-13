@@ -1,0 +1,32 @@
+.layout {
+  height: var(--layout-height);
+  overflow-y: hidden;
+}
+
+.layout-content-height {
+  height: var(--layout-content-height);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1rem;
+}
+
+.img-zoom {
+  &:hover {
+    transform: scale(1.4);
+    transition: all 0.2s ease-in-out;
+    margin-bottom: 50px;
+  }
+}
+
+.hide-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.btn-primary {
+  --bs-btn-color: #{$light-gray};
+  --bs-btn-hover-color: #{$light-gray};
+  --bs-btn-active-color: #{$light-gray};
+  --bs-btn-disabled-color: #{$light-gray};
+}
