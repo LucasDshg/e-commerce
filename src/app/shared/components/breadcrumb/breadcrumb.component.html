@@ -1,0 +1,7 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" *ngFor="let item of menuItems">
+      <a [href]="item.url">{{ item.label }}</a>
+    </li>
+  </ol>
+</nav>
