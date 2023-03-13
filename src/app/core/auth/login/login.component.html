@@ -1,0 +1,45 @@
+<div class="container background-login">
+  <div class="row h-100">
+    <div class="col-10 col-md-7 col-lg-6 col-xl-5 mx-auto my-auto">
+      <div class="card p-5">
+        <div class="card-header text-center bg-transparent">
+          <h4 class="card-title">Login</h4>
+          <small class="card-subtitle">Informe o usuario e senha</small>
+        </div>
+        <div class="card-body px-0">
+          <div class="row">
+            <div class="col-12">
+              <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+                {{ errorMessage }}
+              </div>
+
+              <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #formTemplate>
+  <form (ngSubmit)="submit()" [formGroup]="form">
+    <app-input-text
+      label="Usuário"
+      [isRequired]="true"
+      formControlName="user"
+    ></app-input-text>
+
+    <app-input-text
+      label="Senha"
+      [isRequired]="true"
+      formControlName="pass"
+    ></app-input-text>
+
+    <app-button
+      label="Acessar"
+      [isDisabled]="form.invalid"
+      [isLoading]="loading"
+    ></app-button>
+  </form>
+</ng-template>
