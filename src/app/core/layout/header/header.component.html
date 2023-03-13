@@ -1,0 +1,34 @@
+<nav class="navbar bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img
+        src="assets/svgs/logo/logo-gen.svg"
+        alt="gen Logo"
+        width="80"
+      />
+    </a>
+
+    <div class="dropdown ms-auto me-3">
+      <p role="button" class="text-white dropdown-toggle hstack mb-0" dropdown>
+        <i class="bi bi-person-circle fs-4 me-2"></i>
+        {{ user?.name }}
+      </p>
+
+      <ul class="dropdown-menu">
+        <li>
+          <a class="dropdown-item" role="button" (click)="logout()">Sair</a>
+        </li>
+      </ul>
+    </div>
+
+    <a role="button" class="position-relative" (click)="openCart()">
+      <i class="bi bi-bag fs-4 text-white"></i>
+      <span
+        *ngIf="cartItems$ | async as items"
+        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success text-white"
+      >
+        {{ items.length }}
+      </span>
+    </a>
+  </div>
+</nav>
