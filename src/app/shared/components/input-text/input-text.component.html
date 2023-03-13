@@ -1,0 +1,24 @@
+<div class="form-floating mb-3">
+  <input
+    [type]="type"
+    class="form-control"
+    [id]="id"
+    [placeholder]="placeholder"
+    [formControl]="formControl"
+    [required]="isRequired"
+    (change)="emitChange.emit(formControl)"
+  />
+  <label [for]="id">{{ label }}</label>
+
+  <div
+    class="ng-invalid invalid-feedback d-block"
+    *ngIf="
+      isRequired &&
+      formControl.enabled &&
+      formControl.invalid &&
+      formControl.touched
+    "
+  >
+    {{ requiredText }}
+  </div>
+</div>
