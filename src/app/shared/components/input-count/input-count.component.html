@@ -1,0 +1,32 @@
+<div class="hstack mb-3" role="group">
+  <button
+    type="button"
+    class="btn btn-outline-primary"
+    (click)="down()"
+    [disabled]="disabledBtn"
+  >
+    <i class="bi bi-dash"></i>
+  </button>
+
+  <input
+    type="text"
+    class="form-control mx-2 text-center"
+    [style.width.px]="100"
+    [maxlength]="maxLength"
+    [minlength]="minLength"
+    [formControl]="formControl"
+    [max]="max"
+    [min]="min"
+    (blur)="valid()"
+    (change)="onChangeValue.emit(formControl)"
+  />
+
+  <button
+    type="button"
+    class="btn btn-outline-primary"
+    (click)="up()"
+    [disabled]="disabledBtn"
+  >
+    <i class="bi bi-plus"></i>
+  </button>
+</div>
