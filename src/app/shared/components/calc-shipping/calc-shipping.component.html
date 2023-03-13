@@ -1,0 +1,67 @@
+<p class="mb-3">
+  Consulte o prazo de entrega ou
+  <span class="fw-bold text-primary">retire em nossa loja</span>.
+</p>
+
+<div
+  class="d-flex justify-content-center flex-column align-items-center"
+  *ngIf="loading"
+>
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <p class="mt-3">Buscando pelo endereço...</p>
+</div>
+
+<div
+  class="input-group"
+  *ngIf="data$ | async as shipping; else notFoundTemplate"
+>
+  <small class="text-muted text-truncate">
+    <i class="bi bi-geo-alt-fill"></i>
+    {{ shipping.address }}
+  </small>
+  <ul class="list-group list-group-flush w-100">
+    <li
+      class="list-group-item d-flex justify-content-between align-items-start px-0"
+      *ngFor="let ship of shipping.ship"
+    >
+      <div class="ms-2 me-auto">
+        <small>
+          {{
+            ship.type === 'local'
+              ? 'Retire na loja a partir de'
+              : 'Recebera até'
+          }}
+        </small>
+        <p class="fw-bold mb-0">{{ ship.date | date }}</p>
+      </div>
+
+      <p class="fw-bold mb-0">
+        {{ ship.price === 0 ? 'Grátis' : (ship.price | currency : 'R$') }}
+      </p>
+    </li>
+  </ul>
+</div>
+
+<ng-template #notFoundTemplate>
+  <div class="input-group" *ngIf="!loading">
+    <input
+      type="text"
+      class="form-control rounded-2"
+      placeholder="Calcular frete e prazo"
+      [style.z-index]="0"
+      [formControl]="control"
+    />
+    <button
+      class="btn btn-success btn-sm position-absolute rounded"
+      type="button"
+      id="button-addon2"
+      [style.top.px]="3"
+      [style.right.px]="4"
+      (click)="calc()"
+    >
+      <i class="bi bi-check text-white"></i>
+    </button>
+  </div>
+</ng-template>
