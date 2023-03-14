@@ -32,6 +32,7 @@ export class CartState {
     const index = this.items.findIndex((i) => i.id === id);
     this.items.splice(index, 1);
     this._cartList$.next(this.items);
+      this._updateTotal();
   }
 
   get itemsObservable() {

@@ -13,6 +13,7 @@ import { CartComponent } from '@core/components/cart/cart.component';
 import { OffcanvasModule } from '@shared/components/offcanvas/offcanvas.module';
 import { TooltipsModule } from '@shared/directives/tooltip/tooltips.module';
 import { ButtonModule } from '@shared/components/button/button.module';
+import { ToastModule } from '@shared/components/toast/toast.module';
 
 registerLocaleData(ptBr);
 
@@ -34,6 +35,7 @@ const COMPONENTS = [
     OffcanvasModule,
     TooltipsModule,
     ButtonModule,
+    ToastModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent],
