@@ -646,14 +646,14 @@
       "price": 695,
       "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
       "color": {
-        "name": "Vermelho",
-        "value": "#ff0000"
+        "name": "Preto",
+        "value": "#000000"
       },
       "size": {
-        "value": "P",
-        "name": "Pequeno"
+        "value": "M",
+        "name": "Médio"
       },
-      "quant": 1,
+      "quant": 2,
       "stock": 10,
       "id": 1
     }

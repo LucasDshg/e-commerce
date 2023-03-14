@@ -32,6 +32,16 @@ export class CartFacade {
   }
 
   addItem(item: ICart) {
+    const isAdded = this._findProductCart(item.idProduct, 'idProduct');
+
+    if (isAdded) {
+      return this.updateItem(isAdded.id!, {
+        quant: isAdded.quant + item.quant,
+        color: item.color,
+        size: item.size,
+      });
+    }
+
     return this._cartService.addItem(item).pipe(
       tap((res) => {
         this._cartState.addItem = res;
@@ -41,7 +51,7 @@ export class CartFacade {
   }
 
   updateItem(id: number, item: Partial<ICart>) {
-    const product = this._cartState.items.find((item) => item.id === id)!;
+    const product = this._findProductCart(id);
 
     return this._cartService.updateItem(id, Object.assign(product, item)).pipe(
       tap((res) => {
@@ -62,5 +72,9 @@ export class CartFacade {
 
   private _showToastSuccess(text: string) {
     this._toastService.show({ text, type: 'success' });
+  }
+
+  private _findProductCart(id: number, key: string = 'id') {
+    return this._cartState.items.find((item) => (item as any)[key] === id)!;
   }
 }
