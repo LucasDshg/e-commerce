@@ -57,9 +57,11 @@
       </div>
     </li>
   </ul>
-  <div class="mt-auto mb-3">
+  <div class="mt-auto mb-3" *ngIf="total">
     <hr />
-    <h3 class="mb-2">Total: {{ total | async | currency : 'R$' }}</h3>
+    <h3 class="mb-2">
+      Total: {{ total | async | currency : 'R$' }}
+    </h3>
     <app-button label="Finalizar Compra"></app-button>
   </div>
 </app-offcanvas>

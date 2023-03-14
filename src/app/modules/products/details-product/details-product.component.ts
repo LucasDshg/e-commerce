@@ -40,10 +40,7 @@ export class DetailsProductComponent implements OnInit {
 
     this._cartFacade
       .addItem(this.form.value)
-      .pipe(
-        delay(2000),
-        finalize(() => (this.loading = false)),
-      )
+      .pipe(finalize(() => (this.loading = false)))
       .subscribe();
   }
 
