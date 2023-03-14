@@ -657,23 +657,6 @@
       "id": 21
     },
     {
-      "idProduct": 19,
-      "title": "Opna Women's Short Sleeve Moisture",
-      "price": 7.95,
-      "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
-      "color": {
-        "name": "Vermelho",
-        "value": "#ff0000"
-      },
-      "size": {
-        "value": "P",
-        "name": "Pequeno"
-      },
-      "quant": 1,
-      "stock": 10,
-      "id": 22
-    },
-    {
       "idProduct": 6,
       "title": "Solid Gold Petite Micropave ",
       "price": 168,
@@ -686,9 +669,26 @@
         "value": "P",
         "name": "Pequeno"
       },
-      "quant": 3,
+      "quant": 1,
       "stock": 10,
       "id": 23
+    },
+    {
+      "idProduct": 19,
+      "title": "Opna Women's Short Sleeve Moisture",
+      "price": 7.95,
+      "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
+      "color": {
+        "name": "Preto",
+        "value": "#000000"
+      },
+      "size": {
+        "value": "P",
+        "name": "Pequeno"
+      },
+      "quant": 1,
+      "stock": 10,
+      "id": 24
     }
   ],
   "shipping": [

@@ -25,6 +25,10 @@ export class CartFacade {
     return this._cartState.itemsObservable;
   }
 
+  getTotalCart() {
+    return this._cartState.totalCartObservable;
+  }
+  
   addItem(item: ICart) {
     return this._cartService
       .addItem(item)

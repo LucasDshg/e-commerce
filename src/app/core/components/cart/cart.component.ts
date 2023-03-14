@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class CartComponent extends OffcanvasRef implements OnInit {
   data: ICart[] = [];
-  total!: number;
+  total!: Observable<number>;
 
   constructor(
     private _cartFacade: CartFacade,
@@ -24,13 +24,7 @@ export class CartComponent extends OffcanvasRef implements OnInit {
   }
 
   ngOnInit(): void {
-    this._cartFacade
-      .getItems()
-      .pipe(skipWhile((res) => !res.length))
-      .subscribe((res) => {
-        this.data = res;
-        this.total = res.map((item) => item.price).reduce((a, b) => a + b);
-      });
+    this._getItems();
   }
 
   seeDetails(id: number) {
@@ -47,5 +41,15 @@ export class CartComponent extends OffcanvasRef implements OnInit {
     action === 'add' ? quant++ : quant--;
 
     this._cartFacade.updateItem(item.id!, { quant }).subscribe();
+  }
+
+  private _getItems() {
+    this._cartFacade
+      .getItems()
+      .pipe(skipWhile((res) => !res.length))
+      .subscribe((res) => {
+        this.data = res;
+        this.total = this._cartFacade.getTotalCart();
+      });
   }
 }
