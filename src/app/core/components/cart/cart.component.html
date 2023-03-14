@@ -10,54 +10,55 @@
   >
     <li
       role="button"
-      class="list-group-item hstack px-0"
+      class="list-group-item flex-column px-0"
       *ngFor="let item of data"
     >
-      <div class="ms-2 me-auto d-flex" (click)="seeDetails(item.idProduct!)">
+      <div class="hstack" (click)="seeDetails(item.idProduct!)">
         <img [src]="item.image" width="80" height="80" alt="" />
 
-        <div class="ms-3">
+        <div class="mx-3">
           <p class="mb-1">{{ item.title }}</p>
           <h4 class="fw-bold">
             {{ item.price | currency : 'R$' }}
           </h4>
-
-          <small>Quantidade:</small>
-          <p class="mt-1">
-            <button
-              type="button"
-              class="btn btn-sm btn-outline-primary"
-              [disabled]="item.quant === 1"
-              (click)="updateQuant(item, 'remove')"
-            >
-              <i class="bi bi-dash"></i>
-            </button>
-            <span class="mx-2 fw-bold"> {{ item.quant }}</span>
-            <button
-              [disabled]="item.quant === item.stock"
-              type="button"
-              class="btn btn-sm btn-outline-primary"
-              (click)="updateQuant(item, 'add')"
-            >
-              <i class="bi bi-plus"></i>
-            </button>
-          </p>
         </div>
-      </div>
 
-      <a
-        role="button"
-        class="me-3"
-        tooltip="Remover item"
-        (click)="remove(item.id!)"
-      >
-        <i class="bi bi-trash text-danger fs-5"></i>
-      </a>
+        <a
+          role="button"
+          class="me-3 ms-auto"
+          tooltip="Remover item"
+          (click)="remove(item.id!)"
+        >
+          <i class="bi bi-trash text-danger fs-5"></i>
+        </a>
+      </div>
+      <div [style.margin-left.px]="94">
+        <small>Quantidade:</small>
+        <p class="mt-1">
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-primary"
+            [disabled]="item.quant === 1"
+            (click)="updateQuant(item, 'remove')"
+          >
+            <i class="bi bi-dash"></i>
+          </button>
+          <span class="mx-2 fw-bold"> {{ item.quant }}</span>
+          <button
+            [disabled]="item.quant === item.stock"
+            type="button"
+            class="btn btn-sm btn-outline-primary"
+            (click)="updateQuant(item, 'add')"
+          >
+            <i class="bi bi-plus"></i>
+          </button>
+        </p>
+      </div>
     </li>
   </ul>
   <div class="mt-auto mb-3">
     <hr />
-    <h3 class="mb-2">Total: {{ total | currency : 'R$' }}</h3>
+    <h3 class="mb-2">Total: {{ total | async | currency : 'R$' }}</h3>
     <app-button label="Finalizar Compra"></app-button>
   </div>
 </app-offcanvas>
