@@ -20,9 +20,9 @@ export abstract class BaseComponent
   disable = new Subject<boolean>();
 
   constructor(public injector: Injector, public cdr: ChangeDetectorRef) {
-    this.disable
-      .pipe(distinctUntilChanged(), takeUntil(this.onDestroy))
-      .subscribe((i) => this.disbaledControl(i));
+    // this.disable
+    //   .pipe(distinctUntilChanged(), takeUntil(this.onDestroy))
+    //   .subscribe((i) => this.disbaledControl(i));
   }
 
   ngAfterViewInit(): void {
@@ -55,10 +55,8 @@ export abstract class BaseComponent
     this.cdr.detectChanges();
   }
 
-  setDisabledState(isDisabled: boolean): void {}
-
-  disbaledControl(isDisabled: boolean): void {
-    isDisabled ? this.formControl.disable() : this.formControl.enable();
+  setDisabledState(value: boolean): void {
+    value ? this.formControl.disable() : this.formControl.enable();
     this.cdr.detectChanges();
   }
 

@@ -1,8 +1,8 @@
 <button
-  type="submit"
+  [type]="type"
   [disabled]="isDisabled || isLoading"
   class="btn btn-primary w-100"
-  (click)="onClick.emit($event)"
+  (click)="onClick.emit($event.target!)"
 >
   <ng-container *ngIf="!isLoading; else loadingTemplate">
     {{ label }}

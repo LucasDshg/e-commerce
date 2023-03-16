@@ -8,7 +8,7 @@ import {
   Output,
   forwardRef,
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BaseComponent } from '../base-component';
 import { randomId } from 'src/app/utils/functions';
 
@@ -34,14 +34,14 @@ export class InputTextComponent extends BaseComponent {
   @Input() label: string = '';
   @Input() type: string = 'text';
   @Input() id: string = randomId('input_text');
-  @Input() placeholder: string = '';
+  @Input() placeholder: string = 'Placeholder test';
   @Input() requiredText: string = 'Preencha o campo.';
   @Input() isRequired: boolean = false;
   @Input() set isDisable(disabled: boolean) {
-    super.disable?.next(disabled);
+    super.setDisabledState(disabled);
   }
 
-  @Output() emitChange = new EventEmitter<any>();
+  @Output() emitChange = new EventEmitter<FormControl>();
 
   constructor(injector: Injector, cdr: ChangeDetectorRef) {
     super(injector, cdr);

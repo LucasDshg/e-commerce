@@ -8,6 +8,7 @@ export class ButtonComponent implements OnInit {
   @Input() isDisabled: boolean = false;
   @Input() isLoading: boolean = false;
   @Input() label: string = '';
+  @Input() type: 'submit' | 'button' = 'button';
 
   @Output() onClick = new EventEmitter<any>();
   constructor() {}
